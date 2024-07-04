@@ -21,7 +21,7 @@ function AdminEducation() {
             let response;
             if (selectedItemForEdit) {
 
-                response = await axios.post("/api/portfolio/update-education",
+                response = await axios.post(`${process.env.BASE_URL}/api/portfolio/update-education`,
                     {
                         ...values,
                         _id: selectedItemForEdit._id
@@ -30,7 +30,7 @@ function AdminEducation() {
 
             }
             else {
-                response = await axios.post("/api/portfolio/add-education",
+                response = await axios.post(`${process.env.BASE_URL}/api/portfolio/add-education`,
                     values,
                 )
             }
@@ -58,7 +58,7 @@ function AdminEducation() {
     const onDelete = async (item) => {
         try {
             dispatch(showLoading());
-            const response = await axios.post("/api/portfolio/delete-education", { _id: item._id })
+            const response = await axios.post(`${process.env.BASE_URL}/api/portfolio/delete-education`, { _id: item._id })
             dispatch(hideLoading());
             if (response.data.success) {
                 message.success(response.data.message);

@@ -13,7 +13,7 @@ function AdminContact(){
        try {
             console.log("before making api call")
             dispatch(showLoading());
-            const response=await axios.post("/api/portfolio/update-contact",{
+            const response=await axios.post(`${process.env.BASE_URL}/api/portfolio/update-contact`,{
                 ...values,
                 _id:portfolioData.contacts._id,
             })

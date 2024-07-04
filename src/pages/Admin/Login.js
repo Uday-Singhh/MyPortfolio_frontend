@@ -15,7 +15,7 @@ function Login() {
     const login = async () => {
         try {
             dispatch(showLoading());
-            const response = await axios.post("/api/portfolio/admin-login", user);
+            const response = await axios.post(`${process.env.BASE_URL}/api/portfolio/admin-login`, user);
             
             dispatch(hideLoading());
 

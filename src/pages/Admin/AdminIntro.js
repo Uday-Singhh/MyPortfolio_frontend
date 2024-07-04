@@ -13,7 +13,7 @@ function AdminIntro(){
        try {
             console.log("before making api call")
             dispatch(showLoading());
-            const response=await axios.post("/api/portfolio/update-intro",{
+            const response=await axios.post(`${process.env.BASE_URL}/api/portfolio/update-intro`,{
                 ...values,
                 _id:portfolioData.intro._id,
             })

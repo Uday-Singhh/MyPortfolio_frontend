@@ -4,6 +4,9 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Loader from './components/Loader';
 
+
+
+
 import { useDispatch, useSelector } from 'react-redux';
 import { hideLoading, setPortfolioData, showLoading, ReloadData } from './redux/rootSlice';
 import Admin from './pages/Admin';
@@ -17,7 +20,8 @@ export default function App() {
   const getPortfolioData=async()=>{
     try {
       dispatch(showLoading())
-      const response=await axios.get("/api/portfolio/get-portfolio-data");
+      console.log(process.env.REACT_APP_BASE_URL);
+      const response=await axios.get(`${process.env.REACT_APP_BASE_URL}/api/portfolio/get-portfolio-data`);
       dispatch(setPortfolioData(response.data));
       dispatch(hideLoading());
       dispatch(ReloadData(false))

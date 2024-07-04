@@ -22,7 +22,7 @@ function AdminProjects() {
             let response;
             if (selectedItemForEdit) {
 
-                response = await axios.post(`${process.env.BASE_URL}/api/portfolio/update-project`,
+                response = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/portfolio/update-project`,
                     {
                         ...values,
                         _id: selectedItemForEdit._id
@@ -31,7 +31,7 @@ function AdminProjects() {
 
             }
             else {
-                response = await axios.post(`${process.env.BASE_URL}/api/portfolio/add-project`,
+                response = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/portfolio/add-project`,
                     values,
                 )
             }
@@ -59,7 +59,7 @@ function AdminProjects() {
     const onDelete = async (item) => {
         try {
             dispatch(showLoading());
-            const response = await axios.post(`${process.env.BASE_URL}/api/portfolio/delete-project`, { _id: item._id })
+            const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/portfolio/delete-project`, { _id: item._id })
             dispatch(hideLoading());
             if (response.data.success) {
                 message.success(response.data.message);
